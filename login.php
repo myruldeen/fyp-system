@@ -3,29 +3,29 @@
 // ob_start();
 // session_start();
 
-// include "includes/config.php";
+include "includes/config.php";
 // $msg = '';
-// if (isset($_POST['login'])){
+if (isset($_POST['login'])){
+    header('Location: dashboard.php');
+
+    // OOP method
+    // $no_matric = $conn->real_escape_string(trim($_POST['no_matric']));
+    // $password  = $conn->real_escape_string(trim($_POST['password']));
+
+    // $validateMatric = $conn->query("SELECT * FROM users WHERE matricNum='$no_matric'");
+    // if ($validateMatric->num_rows == 0) $msg = "No matrik tidak dijumpai!";
+    // else {
+    //     $db_row = $validateMatric->fetch_assoc();
+    //     if (password_verify($password, $db_row['password'])) {
+    //         // echo 'Valid Password'; 
+    //         $_SESSION['user'] = $db_row;
+    //         $_SESSION['student'] = true;
+    //         header('Location: dashboard.php');
+    //     } else $msg = 'Invalid Password.';
+    // }
+
     
-
-//     // OOP method
-//     $no_matric = $conn->real_escape_string(trim($_POST['no_matric']));
-//     $password  = $conn->real_escape_string(trim($_POST['password']));
-
-//     $validateMatric = $conn->query("SELECT * FROM users WHERE matricNum='$no_matric'");
-//     if ($validateMatric->num_rows == 0) $msg = "No matrik tidak dijumpai!";
-//     else {
-//         $db_row = $validateMatric->fetch_assoc();
-//         if (password_verify($password, $db_row['password'])) {
-//             // echo 'Valid Password'; 
-//             $_SESSION['user'] = $db_row;
-//             $_SESSION['student'] = true;
-//             header('Location: dashboard.php');
-//         } else $msg = 'Invalid Password.';
-//     }
-
-    
-// }
+}
 
 
 

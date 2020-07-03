@@ -1,9 +1,3 @@
-<?php 
-// ob_start();
-// session_start();
-// include('include/db.php');
-// if (!isset($_SESSION['user'])) header('Location: login.php');
-?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -11,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>FYP System | Dashboard</title>
+    <title>Complaint System | Login(SV)</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -26,39 +20,15 @@
     </style>
   </head>
     <body>
-	<nav class="navbar navbar-default">
-	  <div class="container">
-	    <div class="navbar-header">
-	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-	        <span class="sr-only">Toggle navigation</span>
-	        <span class="icon-bar"></span>
-	        <span class="icon-bar"></span>
-	        <span class="icon-bar"></span>
-	      </button>
-	      <a class="navbar-brand" href="index.php">
-	      	<img alt="Brand" class="brand-image" src="http://esurvey.unisel.edu.my/eLecturer/admin/images/logo.png"/>
-	      </a>
-	    </div>
-	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-	       <ul class="nav navbar-nav">
-	        <li><a href="dashboard.php"><i class="fa fa-sign-in"></i> Dashboard</a></li>
-	        <li><a href="profile.php"><i class="fa fa-user"></i> Profile</a></li>
-	      </ul>
-	      
-	    </div>
-	  </div>
-	</nav>
+	<?php include "includes/nav.php" ?>
 
 	<div class="container">
-		
-		<h1 class="page-header">Home</h1>
-		<h2>You dont have any project yet. Please <a href="#">add a project</a></h2>
-			<!-- <button type="button" class="btn btn-primary btn-xs"><i class="fa fa-plus"></i>Add</button> -->
+		<h1 class="page-header">Profile</h1>
 		<div class="row">
 			<form class="form-horizontal col-lg-6">
 				    
 				    <div class="form-group form-group-sm">
-				      <label class="col-sm-2 control-label" for="sm">Project Title</label>
+				      <label class="col-sm-2 control-label" for="sm">Matric Number</label>
 				      <div class="col-sm-10">
 				        <input class="form-control" type="text" id="sm">
 				      </div>
@@ -89,12 +59,19 @@
 				    </div>
 				  </form>
 			<div class="col-lg-6">
-				
-			
-				
-				<div class="row">
+
+				<!-- <form action="" method="POST" enctype="multipart/form-data">
+					<div class="form-group">
+						<label>MATRIC NO</label>
+						<input type="text" name="project" class="form-control">
+					</div>
 					
-				</div>
+					
+					<div class="form-group">
+						<input type="submit" name="update" class="btn btn-primary" value="UPDATE">
+					</div>
+				</form> -->
+				
 			</div>
 		</div>
 
