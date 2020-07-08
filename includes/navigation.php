@@ -24,6 +24,7 @@
 	       <ul class="nav navbar-nav">
 	        <li><a href="login.php"><i class="fa fa-sign-in"></i> Login</a></li>
 	        <li><a href="svlogin.php"><i class="fa fa-user"></i> SV</a></li>
+	        <li><a href="coordinator.php"><i class="fa fa-user"></i> Coordinator</a></li>
 	      </ul>
 	      
 	    </div>
