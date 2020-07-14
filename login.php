@@ -1,49 +1,5 @@
 
-<?php
-if(isset($_POST["no_matric"])){
-	// $mtx = $_POST['matrik'];
-	// $p = md5($_POST['p']);
- //    $ip = preg_replace('#[^0-9.]#', '', getenv('REMOTE_ADDR'));
 
-    print_r($_POST);
-
-	// if($matrik == "" || $p == ""){
-	// 	echo "login_failed";
- //        exit();
-	// } else {
-	// 	// echo "login_failed";
-	// 	// exit();
-	// 	$sql = "SELECT matric_no, password FROM student_tbl WHERE matric_no = '$mtx' AND activated='1' LIMIT 1";
- //        $query = $conn->query($sql);
- //        if ($query) {
- //        	$row = $query->fetch_assoc();
-	// 		$db_id = $row['id'];
-	// 		$db_mtx = $row['matric_no'];
-	//         $db_pass_str = $row['password'];
-	// 		if($p != $db_pass_str){
-	// 			echo "login_failed";
-	//             exit();
-	// 		} else {
-	// 			$_SESSION['userid'] = $db_id;
-	// 			$_SESSION['matric'] = $db_mtx;
-	// 			$_SESSION['password'] = $db_pass_str;
-	// 			setcookie("id", $db_id, strtotime( '+30 days' ), "/", "", "", TRUE);
-	// 			setcookie("mtx", $db_mtx, strtotime( '+30 days' ), "/", "", "", TRUE);
-	//     		setcookie("pass", $db_pass_str, strtotime( '+30 days' ), "/", "", "", TRUE);
-
-	// 			$sql = "UPDATE student_tbl SET ip='$ip', last_login_date=now() WHERE matric_no='$db_mtx' LIMIT 1";
-	//             $query = $conn->query($sql);
-	// 			echo $db_mtx;
-	// 		    exit();
-	// 		}
- //        } else {
- //        	echo $conn->error;
- //        }
-       
-	// }
-	// exit();
-}
-?>
 
 <!DOCTYPE html>
 <html lang="en">

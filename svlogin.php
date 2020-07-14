@@ -24,34 +24,77 @@
 
 	<div class="container">
 		<div class="col-lg-4">
-			<form action="" method="POST">
+			<form action="" method="POST" id="svLogin">
+				<span id="message"></span>
 				<div class="form-group">
-					<label>ID NO:</label>
-					<input type="text" name="matric_no" class="form-control" autocomplete="off">
+					<input type="text" name="id_num" placeholder="ID Number" id="id_num" onfocus="clearMessage()" class="form-control" onkeypress="return isNumber(event)" maxlength="10">
 				</div>
 				<div class="form-group">
-					<label>PASSWORD:</label>
-					<input type="password" name="password" class="form-control">
+					<input type="text" name="password" placeholder="Password" id="password" onfocus="clearMessage()" class="form-control">
 				</div>
 				<div class="form-group">
-					<input type="submit" name="login" value="Login" class="btn btn-primary">
+					<input type="submit" name="login" value="Login" id="login" class="btn btn-primary" >
 				</div>
+				
 			</form>
 			
 		</div>
 
 	</div>
    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script>
-    	$(window).scroll(function(){
-		   if ($(window).scrollTop() == 0) {
-		    $(".navbar").removeClass("fixed-top");
-		 } else {
-		    $(".navbar").addClass("fixed-top");
-		 }
+		$(document).ready(function() {
+		$('#svLogin').on('submit', function(e) {
+			e.preventDefault();
+			var id_num = $('#id_num').val();
+			var p = $('#password').val();
+			var message = $("#message");
+			if (id_num == "") {
+				message.html("ID number cannot be blank");
+				_('id_num').style.borderColor = 'red';
+			} else if (p == "") {
+				message.html("Password cannot be blank");
+				_('password').style.borderColor = 'red';
+			} else {
+				$.ajax({
+                    url: "sv/_login.php",
+                    method: "POST",
+                    data: $('#svLogin').serialize(),
+                    success: function(data){
+                    	// $("#message").html(data);
+                        if (data == 'berjaya') {
+                        	window.location = "student/dashboard.php";
+                        } else {
+                        	$("#message").html(data);
+                        }
+                    },
+                    error: function() {
+                        alert('error handling here');
+                    }
+                });
+			}
 		});
+		
+		
+	});
+	function clearMessage() {
+		$('#message').html("");
+		_('id_num').style.borderColor = 'black';
+		_('password').style.borderColor = 'black';
+	}
+	function isNumber(evt) {
+		evt = (evt) ? evt : window.event;
+	    var charCode = (evt.which) ? evt.which : evt.keyCode;
+	    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+	        return false;
+	    }
+	    return true;
+	}
+	function _(x) {
+		return document.getElementById(x);
+	}
     </script>
   </body>
 </html>
