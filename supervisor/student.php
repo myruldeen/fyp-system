@@ -152,24 +152,6 @@ function getRow(id){
   });
 }
 
-function projectDetail(id) {
-  $.ajax({
-    type: 'POST',
-    url: 'project_row.php',
-    data: {id:id},
-    dataType: 'json',
-    success: function(response){
-      $('.studid').val(response.studid);
-      $('#edit_student_id').val(response.student_id);
-      $('#edit_fullname').val(response.fullname);
-      $('#selcourse').val(response.course_id);
-      $('#selcourse').html(response.code);
-      $('#selsupervisor').val(response.supervisor_id);
-      $('#selsupervisor').html(response.name);
-      $('.del_stu').html(response.fullname);
-    }
-  });
-}
 </script>
 </body>
 </html>

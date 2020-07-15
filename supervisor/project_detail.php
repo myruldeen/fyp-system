@@ -65,7 +65,7 @@
               	 ?>
 					<div class="col-lg-4 col-md-4 col-xs-4">
 						<div class="thumbnail">
-					      <img src="https://via.placeholder.com/350C" alt="..."> 
+					      <img src="<?= (!empty($row['photo'])) ? '../images/'.$row['photo'] : '../images/profile.jpg'; ?>" alt="..."> 
 					    </div> 
 					</div>
 					<div class="col-lg-8">
