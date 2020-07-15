@@ -57,20 +57,28 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header with-border">
-              <a href="#addnew" data-toggle="modal" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-plus"></i> New</a>
+              <?php 
+              $sql = "SELECT student_id FROM projects WHERE student_id = '".$user['id']."'";
+              $query = $conn->query($sql);
+              if ($query->fetch_assoc() == 0) {
+                echo "<a href=\"#addnew\" data-toggle=\"modal\" class=\"btn btn-primary btn-sm btn-flat\"><i class=\"fa fa-plus\"></i> New</a>";
+              }
+
+               ?>
+              
             </div>
             <div class="box-body">
               <table id="example1" class="table table-bordered">
                 <thead>
                   <th>Course</th>
                   <th>Photo</th>
-                  <th>Fullname</th>
+                  <th>Project</th>
                   <th>Supervisor</th>
                   <th>Project</th>
                 </thead>
                 <tbody>
                   <?php
-                    $sql = "SELECT *, students.id AS studid
+                    $sql = "SELECT *, students.id AS studid, supervisor.photo AS sp
                     FROM students 
                     LEFT JOIN course 
                     ON course.id=students.course_id 
@@ -81,14 +89,14 @@
 
                     $query = $conn->query($sql);
                     while($row = $query->fetch_assoc()){
-                      $photo = (!empty($row['photo'])) ? '../images/'.$row['photo'] : '../images/profile.jpg';
+                      $photo = (!empty($row['sp'])) ? '../images/'.$row['sp'] : '../images/profile.jpg';
                       echo "
                         <tr>
                           <td>".$row['code']."</td>
                           <td>
                             <img src='".$photo."' width='30px' height='30px'>
                           </td>
-                          <td>".$row['fullname']."</td>
+                          <td>".$row['project_title']."</td>
                           <td>".$row['name']."</td>
                           <td>
                             <a href='project_detail.php?id=".$row['studid']."' class='btn btn-primary btn-flat'><span class='fa fa-edit'></span></a>

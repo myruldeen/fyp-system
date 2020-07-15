@@ -16,8 +16,6 @@
 <script src="../bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
 <!-- datepicker -->
 <script src="../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-<!-- bootstrap time picker -->
-<script src="../plugins/timepicker/bootstrap-timepicker.min.js"></script>
 <!-- Slimscroll -->
 <script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->

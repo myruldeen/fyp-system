@@ -60,7 +60,7 @@
                 </thead>
                 <tbody>
                   <?php
-                    $sql = "SELECT *, students.id AS studid
+                    $sql = "SELECT *, students.id AS studid, students.photo AS stp
                     FROM students 
                     LEFT JOIN course 
                     ON course.id=students.course_id 
@@ -70,7 +70,7 @@
 
                     $query = $conn->query($sql);
                     while($row = $query->fetch_assoc()){
-                      $photo = (!empty($row['photo'])) ? '../images/'.$row['photo'] : '../images/profile.jpg';
+                      $photo = (!empty($row['stp'])) ? '../images/'.$row['stp'] : '../images/profile.jpg';
                       echo "
                         <tr>
                           <td>".$row['code']."</td>

@@ -63,21 +63,24 @@
               	}
 
               	 ?>
-					<div class="col-lg-4 col-md-4 col-xs-4">
-						<div class="thumbnail">
-					      <img src="https://via.placeholder.com/350C" alt="..."> 
-					    </div> 
-					</div>
-					<div class="col-lg-8">
-						<h2 class="page-header"><?php echo $row['project_title'] ?></h2>
-						<h4><?php echo $row['project_description'] ?></h4><hr>
-					    <p><span class="label label-success"><?php 
-              $query = $conn->query("SELECT * FROM category WHERE id = '".$row['project_category']."'");
-              $db_row = $query->fetch_assoc();
-              echo $db_row['name']; 
-              ?></span></p>
-					</div>			
-				</div>
+      					<div class="col-lg-4 col-md-4 col-xs-4">
+      						<div class="thumbnail">
+      					      <img src="<?= (!empty($row['photo'])) ? '../images/'.$row['photo'] : '../images/profile.jpg'; ?>" alt="..."> 
+      					    </div> 
+      					</div>
+      					<div class="col-lg-8">
+      						<h2 class="page-header"><?php echo $row['project_title'] ?></h2>
+      						<h4><?php echo $row['project_description'] ?></h4><hr>
+      					    <p><span class="label label-success"><?php 
+                    $query = $conn->query("SELECT * FROM category WHERE id = '".$row['project_category']."'");
+                    $db_row = $query->fetch_assoc();
+                    echo $db_row['name']; 
+                    ?></span></p>
+                    <p>
+                      <a href='#' class='btn btn-primary btn-flat edit_project' data-id='<?php echo $student_id ?>'><span class='fa fa-edit'></span></a>
+                    </p>
+      					</div>			
+      				</div>
             </div>
           </div>
         </div>
@@ -87,26 +90,14 @@
     
   <?php include 'includes/footer.php'; ?>
   <?php include 'includes/student_modal.php'; ?>
+  <?php include '_modal/_project_modal.php'; ?>
 </div>
 <?php include 'includes/scripts.php'; ?>
 <script>
 $(function(){
-  $(document).on('click', '.edit', function(e){
+  $(document).on('click', '.edit_project', function(e){
     e.preventDefault();
-    $('#edit').modal('show');
-    var id = $(this).data('id');
-    getRow(id);
-  });
-
-  $(document).on('click', '.view', function(e){
-    e.preventDefault();
-    $('#view_project').modal('show');
-    var id = $(this).data('id');
-    getRow(id);
-  });
-  
-  $(document).on('click', '.sv', function(e){
-    e.preventDefault();
+    $('#edit_project').modal('show');
     var id = $(this).data('id');
     getRow(id);
   });
@@ -116,18 +107,17 @@ $(function(){
 function getRow(id){
   $.ajax({
     type: 'POST',
-    url: 'student_row.php',
+    url: 'project_row.php',
     data: {id:id},
     dataType: 'json',
     success: function(response){
-      $('.studid').val(response.studid);
-      $('#edit_student_id').val(response.student_id);
-      $('#edit_fullname').val(response.fullname);
-      $('#selcourse').val(response.course_id);
-      $('#selcourse').html(response.code);
-      $('#selsupervisor').val(response.supervisor_id);
-      $('#selsupervisor').html(response.name);
-      $('.del_stu').html(response.fullname);
+      $('.projid').val(response.proid);
+      $('#edit_title').val(response.project_title);
+      $('#edit_description').val(response.project_description);
+      $('#selcategory').val(response.project_category);
+      $('#selcategory').html(response.name);
+
+      // $('.del_stu').html(response.fullname);
     }
   });
 }

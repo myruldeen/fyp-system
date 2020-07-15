@@ -31,15 +31,15 @@
 				$password = password_hash($password, PASSWORD_DEFAULT);
 			}
 
-			$sql = "UPDATE students SET student_id = '$student_id' password = '$password', fullname = '$name', photo = '$filename' WHERE id = '".$user['id']."'";
+			$sql = "UPDATE students SET student_id = '$student_id', password = '$password', fullname = '$name', photo = '$filename' WHERE id = '".$user['id']."'";
 			if($conn->query($sql)){
-				$_SESSION['success'] = 'Supervisor profile updated successfully';
+				$_SESSION['success'] = 'Profile updated successfully';
 			}
 			
 			
 		}
 		else{
-			
+
 			if($return == 'borrow.php' OR $return == 'return.php'){
 				if(!isset($_SESSION['error'])){
 					$_SESSION['error'] = array();
