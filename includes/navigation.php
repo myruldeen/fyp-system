@@ -22,9 +22,9 @@
 	    </div>
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	       <ul class="nav navbar-nav">
-	        <li><a href="login.php"><i class="fa fa-sign-in"></i> Login</a></li>
-	        <li><a href="svlogin.php"><i class="fa fa-user"></i> SV</a></li>
-	        <li><a href="coordinator.php"><i class="fa fa-user"></i> Coordinator</a></li>
+	        <li><a href="student"><i class="fa fa-sign-in"></i> Login</a></li>
+	        <li><a href="supervisor"><i class="fa fa-user"></i> SV</a></li>
+	        <li><a href="admin"><i class="fa fa-user"></i> Coordinator</a></li>
 	      </ul>
 	      
 	    </div>
