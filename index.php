@@ -3,7 +3,7 @@
 	$where = '';
 	if(isset($_GET['category'])){
 		$catid = $_GET['category'];
-		// $where = 'WHERE id = '.$catid;
+		$where = 'WHERE projects.id = '.$catid;
 	}
 ?>
 <?php include 'includes/header.php'; ?>
@@ -58,7 +58,7 @@
 			        				$sql = "SELECT * FROM projects
 			        				LEFT JOIN category
 			        				ON category.id = projects.project_category 
-			        				WHERE projects.id = $catid";
+			        				$where";
 			        				$query = $conn->query($sql);
 			        				while($row = $query->fetch_assoc()){
 			        					// $status = ($row['status'] == 0) ? '<span class="label label-success">available</span>' : '<span class="label label-danger">not available</span>';
