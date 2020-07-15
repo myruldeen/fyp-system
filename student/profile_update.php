@@ -9,8 +9,9 @@
 	}
 
 	if(isset($_POST['save'])){
+		$student_id = $_POST['student_id'];
 		$curr_password = $_POST['curr_password'];
-		$username = $_POST['username'];
+		$name = $_POST['name'];
 		$password = $_POST['password'];
 		$name = $_POST['name'];
 		$photo = $_FILES['photo']['name'];
@@ -30,25 +31,15 @@
 				$password = password_hash($password, PASSWORD_DEFAULT);
 			}
 
-			$sql = "UPDATE supervisor SET password = '$password', name = '$name', photo = '$filename' WHERE id = '".$user['id']."'";
+			$sql = "UPDATE students SET student_id = '$student_id' password = '$password', fullname = '$name', photo = '$filename' WHERE id = '".$user['id']."'";
 			if($conn->query($sql)){
 				$_SESSION['success'] = 'Supervisor profile updated successfully';
 			}
-			else{
-				if($return == 'borrow.php' OR $return == 'return.php'){
-					if(!isset($_SESSION['error'])){
-						$_SESSION['error'] = array();
-					}
-					$_SESSION['error'][] = $conn->error;
-				}
-				else{
-					$_SESSION['error'] = $conn->error;
-				}
-				
-			}
+			
 			
 		}
 		else{
+			
 			if($return == 'borrow.php' OR $return == 'return.php'){
 				if(!isset($_SESSION['error'])){
 					$_SESSION['error'] = array();

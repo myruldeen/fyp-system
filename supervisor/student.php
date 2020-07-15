@@ -65,7 +65,8 @@
                     LEFT JOIN course 
                     ON course.id=students.course_id 
                     LEFT JOIN supervisor
-                    ON supervisor.id = students.supervisor_id";
+                    ON supervisor.id = students.supervisor_id
+                    WHERE students.supervisor_id = '".$user['id']."'";
 
                     $query = $conn->query($sql);
                     while($row = $query->fetch_assoc()){

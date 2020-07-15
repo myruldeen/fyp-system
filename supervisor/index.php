@@ -12,7 +12,7 @@
   	</div>
   
   	<div class="login-box-body">
-    	<p class="login-box-msg">Sign in to start your session</p>
+    	<p class="login-box-msg">Supervisor Login</p>
 
     	<form action="login.php" method="POST">
       		<div class="form-group has-feedback">

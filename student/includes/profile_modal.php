@@ -9,7 +9,13 @@
           	</div>
           	<div class="modal-body">
             	<form class="form-horizontal" method="POST" action="profile_update.php?return=<?php echo basename($_SERVER['PHP_SELF']); ?>" enctype="multipart/form-data">
-          		  
+          		  <div class="form-group">
+                    <label for="student_id" class="col-sm-3 control-label">Student ID</label>
+
+                    <div class="col-sm-9"> 
+                      <input type="text" class="form-control" id="student_id" name="student_id" value="<?php echo $user['student_id']; ?>">
+                    </div>
+                </div>
                 <div class="form-group">
                     <label for="password" class="col-sm-3 control-label">Password</label>
 
@@ -21,7 +27,7 @@
                   	<label for="firstname" class="col-sm-3 control-label">Name</label>
 
                   	<div class="col-sm-9">
-                    	<input type="text" class="form-control" id="name" name="name" value="<?php echo $user['name']; ?>">
+                    	<input type="text" class="form-control" id="name" name="name" value="<?php echo $user['fullname']; ?>">
                   	</div>
                 </div>
                 

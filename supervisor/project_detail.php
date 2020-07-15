@@ -71,7 +71,11 @@
 					<div class="col-lg-8">
 						<h2 class="page-header"><?php echo $row['project_title'] ?></h2>
 						<h4><?php echo $row['project_description'] ?></h4><hr>
-					    <p><span class="label label-success"><?php echo $row['category']; ?></span></p>
+					    <p><span class="label label-success"><?php 
+			              $query = $conn->query("SELECT * FROM category WHERE id = '".$row['project_category']."'");
+			              $db_row = $query->fetch_assoc();
+			              echo $db_row['name']; 
+			              ?></span></p>
 					</div>			
 				</div>
             </div>
