@@ -106,8 +106,8 @@
                     <label for="supervisor" class="col-sm-3 control-label">Supervisor</label>
 
                     <div class="col-sm-9">
-                      <select class="form-control" id="supervisor" name="supervisor" required>
-                        <option value="" selected id="selsupervisor"></option>
+                      <select class="form-control" id="supervisor" name="supervisor" required style="width: 50%">
+                        <!-- <option value="" selected id="selsupervisor"></option> -->
                         <?php
                           $sql = "SELECT * FROM supervisor";
                           $query = $conn->query($sql);

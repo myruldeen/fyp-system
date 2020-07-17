@@ -55,26 +55,35 @@
       <!-- Small boxes (Stat box) -->
        <div class="row">
         <div class="col-xs-12">
+
           <div class="box">
-            <div class="box-header with-border">
+        <?php 
+
+          $q = $conn->query("SELECT student_id FROM projects WHERE student_id = '".$user['id']."'");
+          if ($q) {
+            if ($q->num_rows == 0) {
+              ?>
+              <div class="box-header with-border">
               <?php 
               $sql = "SELECT student_id FROM projects WHERE student_id = '".$user['id']."'";
-              $query = $conn->query($sql);
-              if ($query->fetch_assoc() == 0) {
-                echo "<a href=\"#addnew\" data-toggle=\"modal\" class=\"btn btn-primary btn-sm btn-flat\"><i class=\"fa fa-plus\"></i> New</a>";
+              $q = $conn->query($sql);
+              if ($q->num_rows == 0) {
+                echo "<a href=\"#addnew\" data-toggle=\"modal\" class=\"btn btn-primary btn-sm btn-flat\"><i class=\"fa fa-plus\"></i> New</a> <- Please add a project";
               }
 
                ?>
-              
             </div>
-            <div class="box-body">
+              <?php
+
+            } else {
+              ?>
+              <div class="box-body">
               <table id="example1" class="table table-bordered">
                 <thead>
                   <th>Course</th>
-                  <th>Photo</th>
                   <th>Project</th>
                   <th>Supervisor</th>
-                  <th>Project</th>
+                  <th>View/Edit</th>
                 </thead>
                 <tbody>
                   <?php
@@ -85,7 +94,7 @@
                     LEFT JOIN supervisor
                     ON supervisor.id = students.supervisor_id
                     LEFT JOIN projects
-                    ON projects.student_id = students.id WHERE students.id = projects.student_id";
+                    ON projects.student_id = students.id WHERE students.id = '".$user['id']."'";
 
                     $query = $conn->query($sql);
                     while($row = $query->fetch_assoc()){
@@ -93,11 +102,9 @@
                       echo "
                         <tr>
                           <td>".$row['code']."</td>
-                          <td>
-                            <img src='".$photo."' width='30px' height='30px'>
-                          </td>
+                         
                           <td>".$row['project_title']."</td>
-                          <td>".$row['name']."</td>
+                          <td><img src='".$photo."' width='30px' height='30px'> ".$row['name']."</td>
                           <td>
                             <a href='project_detail.php?id=".$row['studid']."' class='btn btn-primary btn-flat'><span class='fa fa-edit'></span></a>
                           </td>
@@ -108,6 +115,14 @@
                 </tbody>
               </table>
             </div>
+              <?php
+            }
+          }
+
+        ?>
+            
+             
+            
           </div>
         </div>
       </div>

@@ -73,6 +73,7 @@
                 <input type="hidden" class="projid" name="id">
                 
                 <div class="form-group">
+                  <input type="hidden" name="project_id" value="<?= $_GET['id'] ?>">
                     <label for="title" class="col-sm-3 control-label">Title</label>
 
                     <div class="col-sm-9">

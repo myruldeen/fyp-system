@@ -76,8 +76,25 @@
                     $db_row = $query->fetch_assoc();
                     echo $db_row['name']; 
                     ?></span></p>
+                    <?php 
+
+                      $c = $conn->query("SELECT * FROM comments WHERE project_id = '$student_id' ORDER BY id ASC");
+                      if ($c) {
+                        while ($db_row = $c->fetch_assoc()) {
+                          ?>
+                          <blockquote>
+                              <p><?= $db_row['comment'] ?></p>
+                              <footer>Date added <cite title="Source Title"><?= $db_row['date_added'] ?></cite></footer>
+                            </blockquote>
+                          <?php
+                        }
+                      } else {
+                        echo $conn->error;
+                      }
+                     ?>
                     <p>
-                      <a href='#' class='btn btn-primary btn-flat edit_project' data-id='<?php echo $student_id ?>'><span class='fa fa-edit'></span></a>
+                      <a href='#' class='btn btn-primary btn-flat edit_project' data-id='<?php echo $student_id ?>'>Edit Project <span class='fa fa-edit'></span></a>
+
                     </p>
       					</div>			
       				</div>

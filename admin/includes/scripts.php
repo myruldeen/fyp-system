@@ -16,12 +16,13 @@
 <script src="../bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
 <!-- datepicker -->
 <script src="../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-<!-- bootstrap time picker -->
-<script src="../plugins/timepicker/bootstrap-timepicker.min.js"></script>
+
 <!-- Slimscroll -->
 <script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
 <script src="../bower_components/fastclick/lib/fastclick.js"></script>
+<!-- Select2 -->
+<script src="../bower_components/select2/dist/js/select2.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../dist/js/adminlte.min.js"></script>
 <!-- Active Script -->
@@ -69,6 +70,11 @@ $(function(){
     autoclose: true,
     format: 'yyyy-mm-dd'
   }) 
+</script>
+<script>
+  $(document).ready(function() {
+    $('.js-example-basic-single').select2();
+  });
 </script>
 
 

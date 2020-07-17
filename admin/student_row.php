@@ -3,7 +3,7 @@
 
 	if(isset($_POST['id'])){
 		$id = $_POST['id'];
-		$sql = "SELECT *, students.id AS studid
+		$sql = "SELECT *, students.id AS studid, students.supervisor_id AS svid
                     FROM students 
                     LEFT JOIN course 
                     ON course.id=students.course_id 

@@ -1,15 +1,18 @@
 <?php
 	include 'includes/session.php';
-	$q = $conn->query("SELECT * FROM projects WHERE id = '$id'");
-	$db_row = $q->fetch_assoc();
+	
+	$project_id = '';
 	if(isset($_POST['edit'])){
+		$project_id = $_POST['project_id'];
 		$id = $_POST['id'];
 		$title = $_POST['title'];
 		$description = $_POST['description'];
 		$category = $_POST['category'];
 		$photo = $_FILES['photo']['name'];
 
-		
+		$q = $conn->query("SELECT * FROM projects WHERE id = '$id'");
+		$db_row = $q->fetch_assoc();
+
 		if(!empty($photo)){
 			move_uploaded_file($_FILES['photo']['tmp_name'], '../images/'.$photo);
 			$filename = $photo;	
@@ -30,6 +33,6 @@
 		$_SESSION['error'] = 'Fill up edit form first';
 	}
 
-	header('location:home.php');
+	header('location: project_detail.php?id='.$project_id);
 
 ?>

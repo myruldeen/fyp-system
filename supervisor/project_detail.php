@@ -76,6 +76,25 @@
 			              $db_row = $query->fetch_assoc();
 			              echo $db_row['name']; 
 			              ?></span></p>
+			              <?php 
+
+			              $c = $conn->query("SELECT * FROM comments WHERE project_id = '$student_id' ORDER BY id ASC");
+			              if ($c) {
+			              	while ($db_row = $c->fetch_assoc()) {
+			              		?>
+			              		<blockquote>
+			                      <p><?= $db_row['comment'] ?></p>
+			                      <footer>Date added <cite title="Source Title"><?= $db_row['date_added'] ?></cite></footer>
+			                    </blockquote>
+			              		<?php
+			              	}
+			              } else {
+			              	echo $conn->error;
+			              }
+			               ?>
+			              
+		                    
+			              <a href='#' class='btn btn-primary btn-flat add_comment' data-id='<?php echo $student_id ?>'>Add Comment <span class='fa fa-edit'></span></a>
 					</div>			
 				</div>
             </div>
@@ -86,27 +105,14 @@
   </div>
     
   <?php include 'includes/footer.php'; ?>
-  <?php include 'includes/student_modal.php'; ?>
+  <?php include '_modal/_project_modal.php'; ?>
 </div>
 <?php include 'includes/scripts.php'; ?>
 <script>
 $(function(){
-  $(document).on('click', '.edit', function(e){
+  $(document).on('click', '.add_comment', function(e){
     e.preventDefault();
-    $('#edit').modal('show');
-    var id = $(this).data('id');
-    getRow(id);
-  });
-
-  $(document).on('click', '.view', function(e){
-    e.preventDefault();
-    $('#view_project').modal('show');
-    var id = $(this).data('id');
-    getRow(id);
-  });
-  
-  $(document).on('click', '.sv', function(e){
-    e.preventDefault();
+    $('#add_comment').modal('show');
     var id = $(this).data('id');
     getRow(id);
   });

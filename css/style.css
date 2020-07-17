@@ -7,3 +7,28 @@
   margin: 0;
   padding: 4em;
 }
+
+.jumbotron {
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
+  margin-bottom: 5px !important;
+  color: inherit;
+  background-color: #eee;
+  /*background: url("../images/profile.jpg");
+  background-size: cover;*/
+}
+@media screen and (min-width: 768px) {
+  .jumbotron {
+    padding-top: 28px;
+    padding-bottom: 48px;
+  }
+  .container .jumbotron,
+  .container-fluid .jumbotron {
+    padding-right: 60px;
+    padding-left: 60px;
+  }
+  .jumbotron h1,
+  .jumbotron .h1 {
+    font-size: 63px;
+  }
+}

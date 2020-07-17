@@ -11,12 +11,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Student List
+        Project List
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li>Students</li>
-        <li class="active">Student List</li>
+        <li class="active">Project List</li>
       </ol>
     </section>
     <!-- Main content -->
@@ -46,45 +46,44 @@
       <div class="row">
         <div class="col-xs-12">
           <div class="box">
-            <div class="box-header with-border">
-              <a href="#addnew" data-toggle="modal" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-plus"></i> New</a>
-            </div>
+            
             <div class="box-body">
               <table id="example1" class="table table-bordered">
                 <thead>
-                  <th>Course</th>
+                	<th>Student</th>
+                	<th>Supervisor</th>
                   <th>Photo</th>
-                  <th>Student ID</th>
-                  <th>Fullname</th>
-                  <th>Supervisor</th>
-                  <th>Tools</th>
+                  <th>Title</th>
+                  <th>Description</th>
+                  <th>Category</th>
                 </thead>
                 <tbody>
                   <?php
-                    $sql = "SELECT *, students.id AS studid
+                    $sql = "SELECT *, students.id AS studid, students.fullname AS student, projects.photo AS project_photo, category.name AS category, supervisor.name AS supervisor
                     FROM students 
-                    LEFT JOIN course 
-                    ON course.id=students.course_id 
+                    LEFT JOIN projects 
+                    ON projects.student_id=students.id 
                     LEFT JOIN supervisor
-                    ON supervisor.id = students.supervisor_id";
+                    ON supervisor.id = students.supervisor_id
+                    LEFT JOIN category
+                    ON category.id = projects.project_category";
+
 
                     $query = $conn->query($sql);
                     while($row = $query->fetch_assoc()){
-                      $photo = (!empty($row['photo'])) ? '../images/'.$row['photo'] : '../images/profile.jpg';
+                      $photo = (!empty($row['project_photo'])) ? '../images/'.$row['project_photo'] : '../images/profile.jpg';
                       echo "
                         <tr>
-                          <td>".$row['code']."</td>
+                          <td>".$row['student']."</td>
+                          <td>".$row['supervisor']."</td>
                           <td>
                             <img src='".$photo."' width='30px' height='30px'>
-                            <a href='#edit_photo' data-toggle='modal' class='pull-right photo' data-id='".$row['studid']."'><span class='fa fa-edit'></span></a>
+                           
                           </td>
-                          <td>".$row['student_id']."</td>
-                          <td>".$row['fullname']."</td>
-                          <td>".$row['name']."</td>
-                          <td>
-                            <button class='btn btn-success btn-sm edit btn-flat' data-id='".$row['studid']."'><i class='fa fa-edit'></i> Edit</button>
-                            <button class='btn btn-danger btn-sm delete btn-flat' data-id='".$row['studid']."'><i class='fa fa-trash'></i> Delete</button>
-                          </td>
+                          <td>".$row['project_title']."</td>
+        				  <td>".$row['project_description']."</td>
+        				  <td>".$row['category']."</td>
+                         
                         </tr>
                       ";
                     }

@@ -25,7 +25,7 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="books.php"><i class="fa fa-circle-o"></i> Project List</a></li>
+          <li><a href="projects.php"><i class="fa fa-circle-o"></i> Project List</a></li>
           <li><a href="category.php"><i class="fa fa-circle-o"></i> Category</a></li>
         </ul>
       </li>

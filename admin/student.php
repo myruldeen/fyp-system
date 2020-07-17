@@ -61,7 +61,7 @@
                 </thead>
                 <tbody>
                   <?php
-                    $sql = "SELECT *, students.id AS studid
+                    $sql = "SELECT *, students.id AS studid, supervisor.photo AS sp, students.photo AS stp
                     FROM students 
                     LEFT JOIN course 
                     ON course.id=students.course_id 
@@ -70,17 +70,18 @@
 
                     $query = $conn->query($sql);
                     while($row = $query->fetch_assoc()){
-                      $photo = (!empty($row['photo'])) ? '../images/'.$row['photo'] : '../images/profile.jpg';
+                      $photo = (!empty($row['sp'])) ? '../images/'.$row['sp'] : '../images/profile.jpg';
+                      $stp = (!empty($row['stp'])) ? '../images/'.$row['stp'] : '../images/profile.jpg';
                       echo "
                         <tr>
                           <td>".$row['code']."</td>
                           <td>
-                            <img src='".$photo."' width='30px' height='30px'>
+                            <img src='".$stp."' width='30px' height='30px'>
                             <a href='#edit_photo' data-toggle='modal' class='pull-right photo' data-id='".$row['studid']."'><span class='fa fa-edit'></span></a>
                           </td>
                           <td>".$row['student_id']."</td>
                           <td>".$row['fullname']."</td>
-                          <td>".$row['name']."</td>
+                          <td><img src='".$photo."' width='30px' height='30px'> ".$row['name']."</td>
                           <td>
                             <button class='btn btn-success btn-sm edit btn-flat' data-id='".$row['studid']."'><i class='fa fa-edit'></i> Edit</button>
                             <button class='btn btn-danger btn-sm delete btn-flat' data-id='".$row['studid']."'><i class='fa fa-trash'></i> Delete</button>
@@ -144,12 +145,13 @@ function getRow(id){
       $('#edit_fullname').val(response.fullname);
       $('#selcourse').val(response.course_id);
       $('#selcourse').html(response.code);
-      $('#selsupervisor').val(response.supervisor_id);
-      $('#selsupervisor').html(response.name);
+       $("#supervisor").select2().val(response.svid).trigger('change.select2');
       $('.del_stu').html(response.fullname);
+      console.log(response.svid);
     }
   });
 }
+
 </script>
 </body>
 </html>
