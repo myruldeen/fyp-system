@@ -56,7 +56,7 @@
 			        			</thead>
 			        			<tbody>
 			        			<?php
-			        				$sql = "SELECT * FROM projects
+			        				$sql = "SELECT *, projects.id AS project_id FROM projects
 			        				LEFT JOIN category
 			        				ON category.id = projects.project_category 
 			        				$where";
@@ -66,7 +66,7 @@
 			        					?>
 			        					<tr>
 			        							
-			        							<td><?= $row['id'] ?></td>
+			        							<td><?= $row['project_id'] ?></td>
 			        							<td><?= $row['project_title'] ?></td>
 			        							<td><?= $row['project_description'] ?></td>
 			        							<td><span class="label label-success"><?= $row['name'] ?></span></td>
