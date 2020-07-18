@@ -3,7 +3,7 @@
 	$where = '';
 	if(isset($_GET['category'])){
 		$catid = $_GET['category'];
-		$where = 'WHERE projects.id = '.$catid;
+		$where = 'WHERE category.id = '.$catid;
 	}
 ?>
 <?php include 'includes/header.php'; ?>
@@ -23,11 +23,11 @@
 	        		
 	        		<div class="box">
 	        			<div class="box-header with-border">
-	        				<div class="input-group">
+	        				<div class="form-group">
 				                <input type="text" class="form-control input-lg" id="searchBox" placeholder="Search for Title, Category">
-				                <span class="input-group-btn">
+				                <!-- <span class="input-group-btn">
 				                    <button type="button" class="btn btn-primary btn-flat btn-lg"><i class="fa fa-search"></i> </button>
-				                </span>
+				                </span> -->
 				            </div>
 	        			</div>
 	        			<div class="box-body">
@@ -47,7 +47,7 @@
 				                	?>
 				                </select>
 				             </div>
-	        				<table class="table table-bordered table-striped" id="booklist">
+	        				<table class="table table-bordered table-striped display nowrap" id="projectlist" >
 			        			<thead>
 			        				<th>ID</th>
 			        				<th>Title</th>

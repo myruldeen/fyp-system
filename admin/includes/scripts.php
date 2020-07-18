@@ -25,6 +25,9 @@
 <script src="../bower_components/select2/dist/js/select2.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../dist/js/adminlte.min.js"></script>
+<!-- DataTables Responsive -->
+<script src="../js/dataTables.min.js"></script>
+<script src="../js/dataTables.responsive.min.js"></script>
 <!-- Active Script -->
 <script>
 $(function(){
@@ -46,6 +49,9 @@ $(function(){
 <!-- Data Table Initialize -->
 <script>
   $(function () {
+    $.extend( $.fn.dataTable.defaults, {
+        responsive: true
+    });
     $('#example1').DataTable({
       responsive: true
     })
@@ -71,10 +77,6 @@ $(function(){
     format: 'yyyy-mm-dd'
   }) 
 </script>
-<script>
-  $(document).ready(function() {
-    $('.js-example-basic-single').select2();
-  });
-</script>
+
 
 

@@ -78,7 +78,7 @@
             } else {
               ?>
               <div class="box-body">
-              <table id="example1" class="table table-bordered">
+              <table id="example1" class="table table-bordered display nowrap">
                 <thead>
                   <th>Course</th>
                   <th>Project</th>

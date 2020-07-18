@@ -23,6 +23,9 @@
 <!-- AdminLTE App -->
 <script src="../dist/js/adminlte.min.js"></script>
 <!-- Active Script -->
+<script src="../js/dataTables.min.js"></script>
+<script src="../js/dataTables.responsive.min.js"></script>
+
 <script>
 $(function(){
 	/** add active class and stay opened when selected */
@@ -42,6 +45,9 @@ $(function(){
 </script>
 <!-- Data Table Initialize -->
 <script>
+  $.extend( $.fn.dataTable.defaults, {
+      responsive: true
+  });
   $(function () {
     $('#example1').DataTable({
       responsive: true

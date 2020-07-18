@@ -30,6 +30,9 @@
 
   	<!-- Google Font -->
   	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <!-- DataTables Responsive -->
+    <link rel="stylesheet" href="../css/dataTables.min.css">
+    <link rel="stylesheet" href="../css/responsive.dataTables.min.css">
 
   	<style type="text/css">
   		.mt20{
