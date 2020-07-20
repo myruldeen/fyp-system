@@ -3,8 +3,8 @@
 	include 'includes/conn.php';
 
 	if(isset($_POST['login'])){
-		$supervisor_id = $_POST['supervisor_id'];
-		$password = $_POST['password'];
+		$supervisor_id = $conn->real_escape_string($_POST['supervisor_id']);
+		$password      = $conn->real_escape_string($_POST['password']);
 
 		$sql = "SELECT * FROM supervisor WHERE supervisor_id = '$supervisor_id'";
 		$query = $conn->query($sql);

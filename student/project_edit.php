@@ -3,11 +3,12 @@
 	
 	$project_id = '';
 	if(isset($_POST['edit'])){
-		$project_id = $_POST['project_id'];
-		$id = $_POST['id'];
-		$title = $_POST['title'];
-		$description = $_POST['description'];
-		$category = $_POST['category'];
+		$project_id   = $conn->real_escape_string($_POST['project_id']);
+		$id           = $conn->real_escape_string($_POST['id']);
+		$title        = $conn->real_escape_string($_POST['title']);
+		$description  = $conn->real_escape_string($_POST['description']);
+		$category     = $conn->real_escape_string($_POST['category']);
+
 		$photo = $_FILES['photo']['name'];
 
 		$q = $conn->query("SELECT * FROM projects WHERE id = '$id'");

@@ -52,7 +52,7 @@
               <div class="row">
               	<?php 
               	if (isset($_GET['id'])) {
-              		$student_id = $_GET['id'];
+              		$student_id = $conn->real_escape_string($_GET['id']);
               	} else {
               		$student_id = '';
               	}

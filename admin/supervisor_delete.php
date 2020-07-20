@@ -2,7 +2,7 @@
 	include 'includes/session.php';
 
 	if(isset($_POST['delete'])){
-		$id = $_POST['id'];
+		$id = $conn->real_escape_string($_POST['id']);
 		$sql = "DELETE FROM supervisor WHERE id = '$id'";
 		if($conn->query($sql)){
 			$_SESSION['success'] = 'Supervisor deleted successfully';

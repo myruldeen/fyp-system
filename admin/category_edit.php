@@ -2,8 +2,8 @@
 	include 'includes/session.php';
 
 	if(isset($_POST['edit'])){
-		$id = $_POST['id'];
-		$name = $_POST['name'];
+		$id = $conn->real_escape_string($_POST['id']);
+		$name = $conn->real_escape_string($_POST['name']);
 
 		$sql = "UPDATE category SET name = '$name' WHERE id = '$id'";
 		if($conn->query($sql)){

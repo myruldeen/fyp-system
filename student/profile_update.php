@@ -1,70 +1,45 @@
 <?php
 	include 'includes/session.php';
 
-	if(isset($_GET['return'])){
-		$return = $_GET['return'];
-	}
-	else{
-		$return = 'home.php';
-	}
-
+	
 	if(isset($_POST['save'])){
-		$student_id = $_POST['student_id'];
-		$curr_password = $_POST['curr_password'];
-		$name = $_POST['name'];
-		$password = $_POST['password'];
-		$name = $_POST['name'];
+		$student_id    = $conn->real_escape_string($_POST['student_id']);
+		$curr_password = $conn->real_escape_string($_POST['curr_password']);
+		$name          = $conn->real_escape_string($_POST['name']);
+		$password      = $conn->real_escape_string($_POST['password']);
+
 		$photo = $_FILES['photo']['name'];
+
 		if(password_verify($curr_password, $user['password'])){
 			if(!empty($photo)){
 				move_uploaded_file($_FILES['photo']['tmp_name'], '../images/'.$photo);
 				$filename = $photo;	
-			}
-			else{
+			} else {
 				$filename = $user['photo'];
 			}
 
 			if($password == $user['password']){
 				$password = $user['password'];
-			}
-			else{
+			} else {
 				$password = password_hash($password, PASSWORD_DEFAULT);
 			}
 
 			$sql = "UPDATE students SET student_id = '$student_id', password = '$password', fullname = '$name', photo = '$filename' WHERE id = '".$user['id']."'";
 			if($conn->query($sql)){
 				$_SESSION['success'] = 'Profile updated successfully';
+			} else {
+				$_SESSION['error'] = $conn->error;
 			}
 			
 			
+		} else {
+			$_SESSION['error'] = 'Incorrect password';
 		}
-		else{
-
-			if($return == 'borrow.php' OR $return == 'return.php'){
-				if(!isset($_SESSION['error'])){
-					$_SESSION['error'] = array();
-				}
-				$_SESSION['error'][] = 'Incorrect password';
-			}
-			else{
-				$_SESSION['error'] = 'Incorrect password';
-			}
-
-		}
-	}
-	else{
-		if($return == 'borrow.php' OR $return == 'return.php'){
-			if(!isset($_SESSION['error'])){
-				$_SESSION['error'] = array();
-			}
-			$_SESSION['error'][] = 'Fill up required details first';
-		}
-		else{
-			$_SESSION['error'] = 'Fill up required details first';
-		}
-		
+	} else {
+		$_SESSION['error'] = 'Complete the form';
 	}
 
-	header('location:'.$return);
+
+	header('location: home.php');
 
 ?>

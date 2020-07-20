@@ -2,7 +2,7 @@
 	include 'includes/session.php';
 
 	if(isset($_POST['add'])){
-		$fullname = $_POST['fullname'];
+		$fullname = $conn->real_escape_string($_POST['fullname']);
 		$filename = $_FILES['photo']['name'];
 		if(!empty($filename)){
 			move_uploaded_file($_FILES['photo']['tmp_name'], '../images/'.$filename);	

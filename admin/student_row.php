@@ -2,7 +2,7 @@
 	include 'includes/session.php';
 
 	if(isset($_POST['id'])){
-		$id = $_POST['id'];
+		$id = $conn->real_escape_string($_POST['id']);
 		$sql = "SELECT *, students.id AS studid, students.supervisor_id AS svid
                     FROM students 
                     LEFT JOIN course 

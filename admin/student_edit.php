@@ -2,11 +2,11 @@
 	include 'includes/session.php';
 
 	if(isset($_POST['edit'])){
-		$id = $_POST['id'];
-		$student_id = $_POST['student_id'];
-		$fullname = $_POST['fullname'];
-		$course = $_POST['course'];
-		$supervisor = $_POST['supervisor'];
+		$id         = $conn->real_escape_string($_POST['id']);
+		$student_id = $conn->real_escape_string($_POST['student_id']);
+		$fullname   = $conn->real_escape_string($_POST['fullname']);
+		$course     = $conn->real_escape_string($_POST['course']);
+		$supervisor = $conn->real_escape_string($_POST['supervisor']);
 
 		$sql = "UPDATE students SET student_id = '$student_id', supervisor_id = $supervisor, fullname = '$fullname', course_id = '$course' WHERE id = '$id'";
 		if($conn->query($sql)){

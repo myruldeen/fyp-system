@@ -2,9 +2,9 @@
 	include 'includes/session.php';
 
 	if(isset($_POST['edit'])){
-		$id = $_POST['id'];
-		$code = $_POST['code'];
-		$title = $_POST['title'];
+		$id    = $conn->real_escape_string($_POST['id']);
+		$code  = $conn->real_escape_string($_POST['code']);
+		$title = $conn->real_escape_string($_POST['title']);
 
 		$sql = "UPDATE course SET code = '$code', title = '$title' WHERE id = '$id'";
 		if($conn->query($sql)){

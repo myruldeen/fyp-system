@@ -4,18 +4,9 @@
 <script src="../bower_components/jquery-ui/jquery-ui.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<!-- Moment JS -->
-<script src="../bower_components/moment/moment.js"></script>
 <!-- DataTables -->
 <script src="../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-<!-- ChartJS -->
-<script src="../bower_components/chart.js/Chart.js"></script>
-<!-- daterangepicker -->
-<script src="../bower_components/moment/min/moment.min.js"></script>
-<script src="../bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
-<!-- datepicker -->
-<script src="../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 <!-- Slimscroll -->
 <script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
@@ -62,17 +53,3 @@ $(function(){
     })
   })
 </script>
-<!-- Date and Timepicker -->
-<script>
-  //Date picker
-  $('#datepicker_add').datepicker({
-    autoclose: true,
-    format: 'yyyy-mm-dd'
-  })
-  $('#datepicker_edit').datepicker({
-    autoclose: true,
-    format: 'yyyy-mm-dd'
-  }) 
-</script>
-
-

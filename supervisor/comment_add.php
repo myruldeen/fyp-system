@@ -1,10 +1,10 @@
 <?php
 	include 'includes/session.php';
-	// print_r($_POST);
+
 	$project_id = '';
 	if(isset($_POST['add'])){
-		$project_id = $_POST['id'];
-		$comment = $_POST['comment'];
+		$project_id = $conn->real_escape_string($_POST['id']);
+		$comment    = $conn->real_escape_string($_POST['comment']);
 		
 		$sql = "INSERT INTO comments (project_id, comment, date_added) VALUES ('$project_id', '$comment', now())";
 		if($conn->query($sql)){

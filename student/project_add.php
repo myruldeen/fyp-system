@@ -3,10 +3,12 @@
 
 	if(isset($_POST['add'])){
 		$userid = $user['id'];
-		$title = $_POST['title'];
-		$description = $_POST['description'];
-		$category = $_POST['category'];
-		$filename = $_FILES['photo']['name'];
+		$title       = $conn->real_escape_string($_POST['title']);
+		$description = $conn->real_escape_string($_POST['description']);
+		$category    = $conn->real_escape_string($_POST['category']);
+
+		$filename    = $_FILES['photo']['name'];
+		
 		if(!empty($filename)){
 			move_uploaded_file($_FILES['photo']['tmp_name'], '../images/'.$filename);	
 		}

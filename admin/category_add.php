@@ -2,7 +2,7 @@
 	include 'includes/session.php';
 
 	if(isset($_POST['add'])){
-		$name = $_POST['name'];
+		$name = $conn->real_escape_string($_POST['name']);
 		
 		$sql = "INSERT INTO category (name) VALUES ('$name')";
 		if($conn->query($sql)){

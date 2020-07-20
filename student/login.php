@@ -3,8 +3,9 @@
 	include 'includes/conn.php';
 
 	if(isset($_POST['login'])){
-		$student_id = $_POST['student_id'];
-		$password = $_POST['password'];
+
+		$student_id = $conn->real_escape_string($_POST['student_id']);
+		$password   = $conn->real_escape_string($_POST['password']);
 
 		$sql = "SELECT * FROM students WHERE student_id = '$student_id'";
 		$query = $conn->query($sql);

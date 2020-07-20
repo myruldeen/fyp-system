@@ -2,8 +2,8 @@
 	include 'includes/session.php';
 
 	if(isset($_POST['edit'])){
-		$id = $_POST['id'];
-		$fullname = $_POST['fullname'];
+		$id = $conn->real_escape_string($_POST['id']);
+		$fullname = $conn->real_escape_string($_POST['fullname']);
 
 		$sql = "UPDATE supervisor SET name = '$fullname' WHERE id = '$id'";
 		if($conn->query($sql)){

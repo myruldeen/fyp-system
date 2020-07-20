@@ -2,8 +2,8 @@
 	include 'includes/session.php';
 
 	if(isset($_POST['add'])){
-		$code = $_POST['code'];
-		$title = $_POST['title'];
+		$code  = $conn->real_escape_string($_POST['code']);
+		$title = $conn->real_escape_string($_POST['title']);
 		
 		$sql = "INSERT INTO course (code, title) VALUES ('$code', '$title')";
 		if($conn->query($sql)){

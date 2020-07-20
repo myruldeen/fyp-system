@@ -2,10 +2,12 @@
 	include 'includes/session.php';
 
 	if(isset($_POST['add'])){
-		$student_id = $_POST['student_id'];
-		$fullname = $_POST['fullname'];
-		$course = $_POST['course'];
+		$student_id = $conn->real_escape_string($_POST['student_id']);
+		$fullname   = $conn->real_escape_string($_POST['fullname']);
+		$course     = $conn->real_escape_string($_POST['course']);
+
 		$filename = $_FILES['photo']['name'];
+
 		if(!empty($filename)){
 			move_uploaded_file($_FILES['photo']['tmp_name'], '../images/'.$filename);	
 		}
